@@ -70,13 +70,13 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     }
 
     function _buildSwaps() internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
-        int256 bal_rETH0 = 3966690186101283013904; // 目标是让它在 16 - 1 之间来回swap
-        int256 bal_WETH0 = 4382479526955180045671;
+        uint256 bal_rETH0 = 3966690186101283013904; // 目标是让它在 16 - 1 之间来回swap
+        uint256 bal_WETH0 = 4382479526955180045671;
 
         IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](10);
 
-        int256 bal_rETH = bal_rETH0;
-        int256 i = 0 ;
+        uint256 bal_rETH = bal_rETH0;
+        uint256 i = 0 ;
         while(i < 10){
             bal_rETH = bal_rETH * 99 / 100;
             swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH, "");
