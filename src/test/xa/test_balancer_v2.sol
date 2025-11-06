@@ -66,7 +66,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
         console.log("Asset Deltas:");
         console.logInt(assetDeltas[0]);
-        console.logInt(assetDeltas[1]);\
+        console.logInt(assetDeltas[1]);
     }
 
     function _buildSwaps() internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
