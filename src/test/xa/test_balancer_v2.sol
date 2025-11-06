@@ -30,6 +30,15 @@ interface IBalancerVault {
         int256[] memory limits,
         uint256 deadline
     ) external returns (int256[] memory assetDeltas);
+
+    function getPoolTokens(bytes32 poolId)
+    external
+    view
+    returns (
+        IERC20[] memory tokens,
+        uint256[] memory balances,
+        uint256 lastChangeBlock
+    );
 }
 
 contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
@@ -53,6 +62,12 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         address[] memory assets = _buildAssets();
         IBalancerVault.FundManagement memory funds = _buildFunds();
         int256[] memory limits = _buildLimits();
+
+        (IERC20[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock) = vault.getPoolTokens(POOL_ID);
+
+        console.log("tokens: ", tokens);
+        console.log("balances: ", balances);
+        console.log("lastChangeBlock: ", lastChangeBlock);
 
 
         int256[] memory assetDeltas = vault.batchSwap(
