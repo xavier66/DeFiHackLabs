@@ -94,7 +94,8 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         return assets;
     }
 
-    function _buildFunds() internal pure returns (IBalancerVault.FundManagement memory) {
+
+    function _buildFunds() internal view returns (IBalancerVault.FundManagement memory) {
         return IBalancerVault.FundManagement({
             sender: address(this),
             fromInternalBalance: true,
