@@ -97,7 +97,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
     function _buildSwaps(uint256 bal_rETH0, uint256 bal_WETH0) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
 
-        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](10);
+        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](65);
 
         uint256 bal_rETH = bal_rETH0;
         uint256 i = 0 ;
