@@ -73,12 +73,14 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         int256 bal_rETH0 = 3966690186101283013904; // 目标是让它在 16 - 1 之间来回swap
         int256 bal_WETH0 = 4382479526955180045671;
 
-        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](121);
+        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](10);
 
         int256 bal_rETH = bal_rETH0;
-        for(int i = 0 ; i < 10 ; i++){
+        int256 i = 0 ;
+        while(i < 10){
             bal_rETH = bal_rETH * 99 / 100;
             swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH, "");
+            i = i + 1;
         }
 
 
