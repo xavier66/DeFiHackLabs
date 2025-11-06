@@ -104,7 +104,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         uint256 bal_rETH = bal_rETH0;
         uint256 i = 0 ;
         while(i < 10){
-            bal_rETH = bal_rETH * 99 / 100;
+            bal_rETH = bal_rETH * 50 / 100;
             swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH, "");
             i = i + 1;
         }
