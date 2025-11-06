@@ -105,7 +105,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         // 目标是让它降低到 6 以内
         while(i < 20){
             uint256 amountOut = bal_rETH * rate / 100 ;
-            if (i == 3){
+            if (i == 4){
                 amountOut = amountOut / 3;
             }
             swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, amountOut, "");
