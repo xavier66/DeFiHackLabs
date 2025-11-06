@@ -63,7 +63,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         IBalancerVault.FundManagement memory funds = _buildFunds();
         int256[] memory limits = _buildLimits();
 
-        (IERC20[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock) = vault.getPoolTokens(POOL_ID);
+        (address[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock) = vault.getPoolTokens(POOL_ID);
 
         console.log("tokens: ", tokens);
         console.log("balances: ", balances);
