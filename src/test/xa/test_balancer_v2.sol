@@ -65,8 +65,14 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
         (address[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock) = vault.getPoolTokens(POOL_ID);
 
-        console.log("tokens: ", tokens);
-        console.log("balances: ", balances);
+        console.log("tokens: ");
+        for(uint256 i = 0; i < tokens.length; i++) {
+            console.log("[%s]:", i, tokens[i]);
+        }
+        console.log("balances: ");
+        for(uint256 i = 0; i < balances.length; i++) {
+            console.log("[%s]:", i, balances[i]);
+        }
         console.log("lastChangeBlock: ", lastChangeBlock);
 
 
