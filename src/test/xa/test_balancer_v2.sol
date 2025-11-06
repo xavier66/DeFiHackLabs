@@ -97,23 +97,23 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
     function _buildSwaps(uint256 bal_rETH0, uint256 bal_WETH0) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
 
-        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](7);
+        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](20);
 
         uint256 bal_rETH = bal_rETH0;
         uint256 i = 0 ;
-        uint256 rate = 99;
-//        while(i < 2){
-//            swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH * rate / 100 - 1, "");
-//            i = i + 1;
-//            bal_rETH -= bal_rETH * rate / 100;
-//        }
-        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH  - 1000, "");
-        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 900, "");
-        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 50, "");
-        swaps[3] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 24, "");
-        swaps[4] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 11, "");
-        swaps[5] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 9, "");
-        swaps[6] = IBalancerVault.BatchSwapStep(POOL_ID, 0, 1, bal_WETH0, "");
+        uint256 rate = 50;
+        while(i < 20){
+            swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH * rate / 100 , "");
+            i = i + 1;
+            bal_rETH -= bal_rETH * rate / 100;
+        }
+//        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH * 50 / 100, "");
+//        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH * 50 / 100, "");
+//        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH * 50 / 100, "");
+//        swaps[3] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH * 50 / 100, "");
+//        swaps[4] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 11, "");
+//        swaps[5] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 9, "");
+//        swaps[6] = IBalancerVault.BatchSwapStep(POOL_ID, 0, 1, bal_WETH0, "");
 
 
         return swaps;
