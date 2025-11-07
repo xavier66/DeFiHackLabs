@@ -97,7 +97,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
     function _buildSwaps(uint256 bal_rETH0, uint256 bal_WETH0) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
 
-        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](4);
+        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](2);
 
         uint256 bal_rETH = bal_rETH0;
         uint256 i = 0 ;
@@ -113,10 +113,10 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 //            bal_rETH -= amountOut;
 //        }
         swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH -30, "");
-        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10, "");
-        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10, "");
+//        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10, "");
+//        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10, "");
 
-        swaps[3] = IBalancerVault.BatchSwapStep(POOL_ID, 0, 1, 578353516781486739891852657591, "");
+        swaps[3] = IBalancerVault.BatchSwapStep(POOL_ID, 0, 1, 353978772998312421488536095785, "");
 
         //6.08765E+29
 //        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 11, "");
