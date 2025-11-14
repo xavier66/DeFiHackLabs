@@ -101,7 +101,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
         uint256 _bal_token0 = bal_token0;
         uint256 i = 0 ;
-        uint256 rate = 99;
+        uint256 rate = 90;
         // 目标是让它降低到 6 以内
         while(i < 20){
             uint256 amountOut = _bal_token0 * rate / 100 ;
