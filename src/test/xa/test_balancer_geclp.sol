@@ -112,7 +112,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 //            i = i + 1;
 //            bal_rETH -= amountOut;
 //        }
-        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, _bal_token0 * 100 / 99, "");
+        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, _bal_token0 /2, "");
 //        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10, "");
 //        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10, "");
 
