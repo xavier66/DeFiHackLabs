@@ -376,7 +376,7 @@ interface IBPool {
 }
 
 contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
-    uint256 constant BLOCK_NUMBER = 23817802;
+    uint256 constant BLOCK_NUMBER = 23817102;
     address constant POOL_ADDR = 0x9D0E8cDf137976E03eF92eDE4C30648D05E25285;
     IBPool constant pool = IBPool(POOL_ADDR);
 
