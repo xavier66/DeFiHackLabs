@@ -377,36 +377,27 @@ interface IBPool {
 
 contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     uint256 constant BLOCK_NUMBER = 23817102;
-    address constant POOL_ADDR = 0x9D0E8cDf137976E03eF92eDE4C30648D05E25285;
     IBPool constant pool = IBPool(0x9D0E8cDf137976E03eF92eDE4C30648D05E25285);
 
     function setUp() public {
         vm.createSelectFork("mainnet", BLOCK_NUMBER);
     }
 
-    /* 入口：打印攻击前余额 */
     function testExploit() public balanceLog{
-        uint256 numtoken = pool.getNumTokens();
-        console.log("", numtoken);
+      uint256 numtoken = pool.getNumTokens();
+      console.log("", numtoken);
 
-        console.log("tokens: ");
-        uint256 bal0 = pool.getBalance(0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0);
-        uint256 bal1 = pool.getBalance(0xBAac2B4491727D78D2b78815144570b9f2Fe8899);
+      console.log("tokens: ");
+      uint256 bal0 = pool.getBalance(0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0);
+      uint256 bal1 = pool.getBalance(0xBAac2B4491727D78D2b78815144570b9f2Fe8899);
 
-        console.log(" balance 0 : ", bal0);
-        console.log(" balance 1 : ", bal1);
+      console.log(" balance 0 : ", bal0);
+      console.log(" balance 1 : ", bal1);
 
-      /**
-       *  address tokenIn,
-    uint256 tokenAmountIn,
-    address tokenOut,
-    uint256 minAmountOut,
-    uint256 maxPrice
-       */
-        (uint256 tokenAmountOut, uint256 spotPriceAfter) = pool.swapExactAmountIn(0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0, 100 * 1e18, 0xBAac2B4491727D78D2b78815144570b9f2Fe8899, 0, 1e34);
+      (uint256 tokenAmountOut, uint256 spotPriceAfter) = pool.swapExactAmountIn(0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0, 100 * 1e18, 0xBAac2B4491727D78D2b78815144570b9f2Fe8899, 0, 1e34);
 
-        console.log("After swap:");
-        console.log("tokenAmountOut: ", tokenAmountOut);
-        console.log("spotPriceAfter: ", spotPriceAfter);
+      console.log("After swap:");
+      console.log("tokenAmountOut: ", tokenAmountOut);
+      console.log("spotPriceAfter: ", spotPriceAfter);
     }
 }
