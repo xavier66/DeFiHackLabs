@@ -47,7 +47,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     address constant TOKEN0 = 0x83F20F44975D03b1b09e64809B757c47f942BEeA;
     address constant TOKEN1 = 0xe07F9D810a48ab5c3c914BA3cA53AF14E4491e8A;
 
-    uint256 constant BLOCK_NUMBER = 23796490;
+    uint256 constant BLOCK_NUMBER = 23796590;
     address constant POOL_ADDR = 0xfbfaD5fa9E99081da6461F36f229B5cC88A64c63;
     bytes32 constant POOL_ID = 0xfbfad5fa9e99081da6461f36f229b5cc88a64c6300020000000000000000062d;
 
