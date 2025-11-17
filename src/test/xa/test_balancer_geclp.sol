@@ -47,9 +47,9 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     address constant TOKEN0 = 0x83F20F44975D03b1b09e64809B757c47f942BEeA;
     address constant TOKEN1 = 0xe07F9D810a48ab5c3c914BA3cA53AF14E4491e8A;
 
-    uint256 constant BLOCK_NUMBER = 23796590;
-    address constant POOL_ADDR = 0xfbfaD5fa9E99081da6461F36f229B5cC88A64c63;
-    bytes32 constant POOL_ID = 0xfbfad5fa9e99081da6461f36f229b5cc88a64c6300020000000000000000062d;
+    uint256 constant BLOCK_NUMBER = 23796490;
+    address constant POOL_ADDR = 0x2191Df821C198600499aA1f0031b1a7514D7A7D9;
+    bytes32 constant POOL_ID = 0x2191df821c198600499aa1f0031b1a7514d7a7d9000200000000000000000639;
 
 
     function setUp() public {
@@ -99,10 +99,10 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     function _buildSwaps_test(uint256 bal_token0, uint256 bal_token1) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
 
         IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](100);
-//        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_token0 * 116/100, "");
-        uint256 i = 0 ;
+        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_token0 * 116/100 + 20306683178563000000 - 100, "");
+        uint256 i = 1 ;
         while(i < 100){
-            swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_token0 * 10/100 , "");
+            swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 203066831785630000000 , "");
             i = i + 1;
         }
         return swaps;
