@@ -391,8 +391,8 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         pool.getCurrentTokens();
 
         console.log("tokens: ");
-        uint256 bal0 = pool.getBalance("0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0");
-        uint256 bal1 = pool.getBalance("0xBAac2B4491727D78D2b78815144570b9f2Fe8899");
+        uint256 bal0 = pool.getBalance(0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0);
+        uint256 bal1 = pool.getBalance(0xBAac2B4491727D78D2b78815144570b9f2Fe8899);
 
         console.log(" balance 0 : ", bal0);
         console.log(" balance 1 : ", bal1);
@@ -404,7 +404,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     uint256 minAmountOut,
     uint256 maxPrice
        */
-        (uint256 tokenAmountOut, uint256 spotPriceAfter) = pool.swapExactAmountIn("0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0", 100 * 1e18, "0xBAac2B4491727D78D2b78815144570b9f2Fe8899", 0, 1e34);
+        (uint256 tokenAmountOut, uint256 spotPriceAfter) = pool.swapExactAmountIn(0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0, 100 * 1e18, 0xBAac2B4491727D78D2b78815144570b9f2Fe8899, 0, 1e34);
 
         console.log("After swap:");
         console.log("tokenAmountOut: ", tokenAmountOut);
