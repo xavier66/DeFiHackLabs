@@ -406,7 +406,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         (uint256 tokenAmountOut, uint256 spotPriceAfter) = pool.swapExactAmountIn(tokens[0], 100 * 1e18, tokens[1], 0, 1e34);
 
         console.log("After swap:");
-        console.logInt("tokenAmountOut: ", tokenAmountOut);
-        console.logInt("spotPriceAfter: ", spotPriceAfter);
+        console.log("tokenAmountOut: ", tokenAmountOut);
+        console.log("spotPriceAfter: ", spotPriceAfter);
     }
 }
