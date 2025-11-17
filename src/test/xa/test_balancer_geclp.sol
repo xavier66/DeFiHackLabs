@@ -100,7 +100,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
         IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](2);
         swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_token0 * 116/100 + 20306683178563 - 100, "");
-        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 20306683178563 * 10 , "");
+        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 20306683178563 * 10 , "");
 
         return swaps;
     }
