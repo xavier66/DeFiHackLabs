@@ -378,9 +378,7 @@ interface IBPool {
 contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     uint256 constant BLOCK_NUMBER = 23817102;
     address constant POOL_ADDR = 0x9D0E8cDf137976E03eF92eDE4C30648D05E25285;
-    IBPool constant pool = IBPool(POOL_ADDR);
-
-
+    IBPool constant pool = IBPool(0x9D0E8cDf137976E03eF92eDE4C30648D05E25285);
 
     function setUp() public {
         vm.createSelectFork("mainnet", BLOCK_NUMBER);
@@ -388,6 +386,8 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
     /* 入口：打印攻击前余额 */
     function testExploit() public balanceLog{
+        uint256 numtoken = pool.getNumTokens();
+        console.log("", numtoken);
         address[] memory tokens = pool.getCurrentTokens();
 
         console.log("tokens: ");
