@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "../basetest.sol";
-interface IBPool is IERC20 {
+interface IBPool {
   /**
    * @dev Struct for token records.
    * @param bound If token is bound to pool.
