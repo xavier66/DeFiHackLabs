@@ -45,16 +45,18 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     IBalancerVault constant vault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
 
 //    uint256 constant BLOCK_NUMBER = 23831814; // eth
-    uint256 constant BLOCK_NUMBER = 401839525; // arbitrum
+//    uint256 constant BLOCK_NUMBER = 401839525; // arbitrum
+    uint256 constant BLOCK_NUMBER = 143975567; // Optimistic
+
 
 //    address constant POOL_ADDR = 0x2191Df821C198600499aA1f0031b1a7514D7A7D9;
 //    bytes32 constant POOL_ID = 0x2191df821c198600499aa1f0031b1a7514d7a7d9000200000000000000000639;
 //    address constant POOL_ADDR = 0x1CCE5169bDe03f3d5aD0206f6BD057953539DAE6;
-    bytes32 constant POOL_ID = 0x820b69fad931d4b4bf14e70ff234a8390f6a0658000200000000000000000547;
+    bytes32 constant POOL_ID = 0x7ca75bdea9dede97f8b13c6641b768650cb837820002000000000000000000d5;
 
 
     function setUp() public {
-        vm.createSelectFork("https://arbitrum-mainnet.infura.io/v3/2c182dd8453b48d4a4a32ced4af4df3d", BLOCK_NUMBER);
+        vm.createSelectFork("https://optimism-mainnet.infura.io/v3/2c182dd8453b48d4a4a32ced4af4df3d", BLOCK_NUMBER);
     }
 
     /* 入口：打印攻击前余额 */
@@ -76,7 +78,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         uint256 bal_token1 = balances[1];
 
 
-        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps_test_2(bal_token0, bal_token1);
+        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps(bal_token0, bal_token1);
         IBalancerVault.FundManagement memory funds = _buildFunds();
         int256[] memory limits = _buildLimits();
 
