@@ -110,11 +110,11 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
     function _buildSwaps(uint256 bal_token0, uint256 bal_token1) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
 
-        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](200);
+        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](1000);
 
         uint256 _bal_token0 = bal_token0;
         uint256 i = 0 ;
-        uint256 rate = 30;
+        uint256 rate = 10;
         // 目标是让它降低到 6 以内
         while(i < 200){
             uint256 amountOut = _bal_token0 * rate / 100 ;
