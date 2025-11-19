@@ -75,7 +75,6 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
 
         IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps(bal_token0, bal_token1);
-        address[] memory assets = _buildAssets();
         IBalancerVault.FundManagement memory funds = _buildFunds();
         int256[] memory limits = _buildLimits();
 
@@ -83,7 +82,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         int256[] memory assetDeltas = vault.batchSwap(
             IBalancerVault.SwapKind.GIVEN_OUT,
             swaps,
-            assets,
+            tokens,
             funds,
             limits,
             1892156007
@@ -155,12 +154,12 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         return swaps;
     }
 
-    function _buildAssets() internal pure returns (address[] memory) {
-        address[] memory assets = new address[](2);
-        assets[0] = TOKEN0;
-        assets[1] = TOKEN1;
-        return assets;
-    }
+//    function _buildAssets() internal pure returns (address[] memory) {
+//        address[] memory assets = new address[](2);
+//        assets[0] = TOKEN0;
+//        assets[1] = TOKEN1;
+//        return assets;
+//    }
 
 
     function _buildFunds() internal view returns (IBalancerVault.FundManagement memory) {
