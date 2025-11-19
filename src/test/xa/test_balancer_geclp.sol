@@ -44,12 +44,11 @@ interface IBalancerVault {
 contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     IBalancerVault constant vault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
 
-    address constant TOKEN0 = 0x83F20F44975D03b1b09e64809B757c47f942BEeA;
-    address constant TOKEN1 = 0xe07F9D810a48ab5c3c914BA3cA53AF14E4491e8A;
-
     uint256 constant BLOCK_NUMBER = 23796490;
-    address constant POOL_ADDR = 0x2191Df821C198600499aA1f0031b1a7514D7A7D9;
-    bytes32 constant POOL_ID = 0x2191df821c198600499aa1f0031b1a7514d7a7d9000200000000000000000639;
+//    address constant POOL_ADDR = 0x2191Df821C198600499aA1f0031b1a7514D7A7D9;
+//    bytes32 constant POOL_ID = 0x2191df821c198600499aa1f0031b1a7514d7a7d9000200000000000000000639;
+    address constant POOL_ADDR = 0x1CCE5169bDe03f3d5aD0206f6BD057953539DAE6;
+    bytes32 constant POOL_ID = 0x1cce5169bde03f3d5ad0206f6bd057953539dae600020000000000000000062b;
 
 
     function setUp() public {
@@ -75,7 +74,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         uint256 bal_token1 = balances[1];
 
 
-        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps_test(bal_token0, bal_token1);
+        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps(bal_token0, bal_token1);
         address[] memory assets = _buildAssets();
         IBalancerVault.FundManagement memory funds = _buildFunds();
         int256[] memory limits = _buildLimits();
