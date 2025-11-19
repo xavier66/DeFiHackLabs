@@ -83,7 +83,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
 
         int256[] memory assetDeltas = vault.batchSwap(
-            IBalancerVault.SwapKind.GIVEN_IN,
+            IBalancerVault.SwapKind.GIVEN_OUT,
             swaps,
             assets,
             funds,
