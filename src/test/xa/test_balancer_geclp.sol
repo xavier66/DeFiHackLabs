@@ -44,7 +44,7 @@ interface IBalancerVault {
 contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     IBalancerVault constant vault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
 
-    uint256 constant BLOCK_NUMBER = 23796490;
+    uint256 constant BLOCK_NUMBER = 23796489;
 //    address constant POOL_ADDR = 0x2191Df821C198600499aA1f0031b1a7514D7A7D9;
 //    bytes32 constant POOL_ID = 0x2191df821c198600499aa1f0031b1a7514d7a7d9000200000000000000000639;
     address constant POOL_ADDR = 0x127ECc2318d002664cc4515C9f2B22B09b6aea85;
