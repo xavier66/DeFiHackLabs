@@ -54,7 +54,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
 
     function setUp() public {
-        vm.createSelectFork("mainnet", BLOCK_NUMBER);
+        vm.createSelectFork("arbitrum-mainnet", BLOCK_NUMBER);
     }
 
     /* 入口：打印攻击前余额 */
