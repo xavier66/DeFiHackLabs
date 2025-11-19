@@ -54,7 +54,7 @@ contract BalancerV2BatchSwapReplayTest is Test {
 
 
     function setUp() public {
-        vm.createSelectFork("mainnet", BLOCK_NUMBER);
+        vm.createSelectFork("arbitrum-mainnet", BLOCK_NUMBER);
          // 3. 验证 fork 成功
         assertGt(block.number, 0, "Fork should be active");
     }
