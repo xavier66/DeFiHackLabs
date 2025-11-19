@@ -76,7 +76,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         uint256 bal_token1 = balances[1];
 
 
-        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps(bal_token0, bal_token1);
+        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps_test_2(bal_token0, bal_token1);
         IBalancerVault.FundManagement memory funds = _buildFunds();
         int256[] memory limits = _buildLimits();
 
@@ -107,15 +107,11 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         return swaps;
     }
 
-        function _buildSwaps_test_2(uint256 bal_token0, uint256 bal_token1) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
+    function _buildSwaps_test_2(uint256 bal_token0, uint256 bal_token1) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
 
-        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](100);
-        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 316647943174897836012256, "");
-        uint256 i = 1 ;
-        while(i < 100){
-            swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10000 , "");
-            i = i + 1;
-        }
+        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](2);
+        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_token0 - 14, "");
+        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 0, 1, 269099735408709701769731 , "");
         return swaps;
     }
 
