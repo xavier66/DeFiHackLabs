@@ -45,8 +45,8 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
     IBalancerVault constant vault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
 
 //    uint256 constant BLOCK_NUMBER = 23831814; // eth
-//    uint256 constant BLOCK_NUMBER = 401839525; // arbitrum
-    uint256 constant BLOCK_NUMBER = 143975567; // Optimistic
+    uint256 constant BLOCK_NUMBER = 401839525; // arbitrum
+//    uint256 constant BLOCK_NUMBER = 143975567; // Optimistic
 //    uint256 constant BLOCK_NUMBER = 43252068 ; // gnosis
 
 
