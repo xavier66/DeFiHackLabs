@@ -53,7 +53,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 //    address constant POOL_ADDR = 0x2191Df821C198600499aA1f0031b1a7514D7A7D9;
 //    bytes32 constant POOL_ID = 0x2191df821c198600499aa1f0031b1a7514d7a7d9000200000000000000000639;
 //    address constant POOL_ADDR = 0x1CCE5169bDe03f3d5aD0206f6BD057953539DAE6;
-    bytes32 constant POOL_ID = 0x8dd4df4ce580b9644437f3375e54f1ab0980822800020000000000000000009c;
+    bytes32 constant POOL_ID = 0xaa56989be5e6267fc579919576948db3e1f108070002000000000000000000ca;
 
 
     function setUp() public {
