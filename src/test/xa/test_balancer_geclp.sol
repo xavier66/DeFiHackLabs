@@ -79,7 +79,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         uint256 bal_token1 = balances[1];
 
 
-        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps_1(bal_token0, bal_token1);
+        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps(bal_token0, bal_token1);
         IBalancerVault.FundManagement memory funds = _buildFunds();
         int256[] memory limits = _buildLimits();
 
