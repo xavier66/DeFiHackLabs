@@ -46,18 +46,19 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
 //    uint256 constant BLOCK_NUMBER = 23831814; // eth
 //    uint256 constant BLOCK_NUMBER = 401839525; // arbitrum
-//    uint256 constant BLOCK_NUMBER = 143975567; // Optimistic
-    uint256 constant BLOCK_NUMBER = 43252068 ; // gnosis
+    uint256 constant BLOCK_NUMBER = 143975567; // Optimistic
+//    uint256 constant BLOCK_NUMBER = 43252068 ; // gnosis
 
 
 //    address constant POOL_ADDR = 0x2191Df821C198600499aA1f0031b1a7514D7A7D9;
 //    bytes32 constant POOL_ID = 0x2191df821c198600499aa1f0031b1a7514d7a7d9000200000000000000000639;
 //    address constant POOL_ADDR = 0x1CCE5169bDe03f3d5aD0206f6BD057953539DAE6;
-    bytes32 constant POOL_ID = 0x1acd5c5e69dc056649d698046486fb54545ce7e4000200000000000000000117;
+    bytes32 constant POOL_ID = 0xdeeaf8b0a8cf26217261b813e085418c7dd8f1ee00020000000000000000058f;
 
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.gnosischain.com", BLOCK_NUMBER);
+//        vm.createSelectFork("https://rpc.gnosischain.com", BLOCK_NUMBER);
+        vm.createSelectFork("https://arbitrum-mainnet.infura.io/v3/2c182dd8453b48d4a4a32ced4af4df3d", BLOCK_NUMBER);
     }
 
     /* 入口：打印攻击前余额 */
